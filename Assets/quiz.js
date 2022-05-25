@@ -1,3 +1,10 @@
+var introEl = document.querySelector("#intro")
+var qaViewEl = document.querySelector("#qa-view")
+var timerEl = document.querySelector("#timer")
+var titleEl = document.querySelector("#title")
+var startQuizBtn = document.querySelector("#start-quiz")
+
+
 /*
 step 1. display start page - title and paragraph and start button.
 start button - ( triggers the quiz game and displays timer and question page)
@@ -11,3 +18,39 @@ step 3. Once you answer all the questions, you will be presented with the score 
 Step 4: show a dashboard of all the highscores. 
 
 */
+var timerRemaining = 75;
+var clockid
+
+var question=[{
+    title: "new question 1",
+    answers:["answer1", "answer2", "answer3", "answer4"],
+    solution: "answer2"
+},{
+    title: "new question 2",
+    answers:["answer1", "answer2", "answer3", "answer4"],
+    solution: "answer3"
+}]
+
+var index = 0;
+
+function countDown () {
+    timerEl.textContent=timerRemaining;
+    timerRemaining--
+}
+
+
+function startGame() {
+    qaViewEl.classList.remove("hide");
+    introEl.classList.add("hide");
+    clockid=setInterval(countDown,1000);
+    displayQuestions();
+
+}
+
+function displayQuestions() {
+    titleEl.textContent=question[index].title;
+
+}
+
+
+startQuizBtn.addEventListener("click",startGame)
