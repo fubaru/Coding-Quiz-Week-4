@@ -2,6 +2,10 @@ var introEl = document.querySelector("#intro")
 var qaViewEl = document.querySelector("#qa-view")
 var timerEl = document.querySelector("#timer")
 var titleEl = document.querySelector("#title")
+var answer1El = document.querySelector("#answer1")
+var answer2El = document.querySelector("#answer2")
+var answer3El = document.querySelector("#answer3")
+var answer4El = document.querySelector("#answer4")
 var startQuizBtn = document.querySelector("#start-quiz")
 
 
@@ -49,8 +53,13 @@ function startGame() {
 
 function displayQuestions() {
     titleEl.textContent=question[index].title;
-
+    answer1El.textContent=question[index].answers[0];
+    answer2El.textContent=question[index].answers[1];
+    answer3El.textContent=question[index].answers[2];
+    answer4El.textContent=question[index].answers[3];
 }
+
+function
 
 
 startQuizBtn.addEventListener("click",startGame)
