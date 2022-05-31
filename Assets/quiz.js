@@ -2,10 +2,12 @@ var introEl = document.querySelector("#intro")
 var qaViewEl = document.querySelector("#qa-view")
 var timerEl = document.querySelector("#timer")
 var titleEl = document.querySelector("#title")
+var ansBtnEl = document.querySelectorAll("button.ansBtn")
 var answer1El = document.querySelector("#answer1")
 var answer2El = document.querySelector("#answer2")
 var answer3El = document.querySelector("#answer3")
 var answer4El = document.querySelector("#answer4")
+var yesOrNoEl = document.querySelector("#yesOrNo")
 var startQuizBtn = document.querySelector("#start-quiz")
 
 
@@ -27,28 +29,36 @@ var clockid
 
 var question=[{
     title: "new question 1",
-    answers:["answer1", "answer2", "answer3", "answer4"],
-    solution: "answer2"
+    answers:["1. answer1", "2. answer2", "3. answer3", "4. answer4"],
+    solution: "2"
 },{
     title: "new question 2",
-    answers:["answer1", "answer2", "answer3", "answer4"],
-    solution: "answer3"
-}]
+    answers:["1. answer1", "2. answer2", "3. answer3", "4. answer4"],
+    solution: "3"
+}];
 
 var index = 0;
 
 function countDown () {
-    timerEl.textContent=timerRemaining;
-    timerRemaining--
-}
+    clockid = setInterval(function(){
+        timerEl.textContent=timerRemaining;
+        timerRemaining--
+    
+        if (timerRemaining === 0 || index === question.length) {
+            clearInterval(clockid);
+        };
+    }, 1000);
+   
+};
 
 
 function startGame() {
     qaViewEl.classList.remove("hide");
     introEl.classList.add("hide");
-    clockid=setInterval(countDown,1000);
-    displayQuestions();
-
+    // clockid=setInterval(countDown,1000);
+    countDown();
+    displayQuestions(index);
+    
 }
 
 function displayQuestions() {
@@ -59,13 +69,40 @@ function displayQuestions() {
     answer4El.textContent=question[index].answers[3];
 }
 
-function nextQuestion (){
-    index++;
-}
+/* function checkAnswer(event) {
+    if (question[answers].solution === event.target.value) {
+        yesOrNoEl.textContent="Correct!";
+    } else if (question[answers].solution !== event.target.value) {
+        timerRemaining = timerRemaining - 10;
+        yesOrNoEl.textContent = "Wrong!";
+    };
+}; */
 
-answer1El.addEventListener("click", nextQuestion)
+function nextQuestion (event){
+    event.preventDefault();
+
+    if (question[index].answers === event.target.value) {
+        yesOrNoEl.textContent="Correct!";
+    } else if (question[index].answers !== event.target.value) {
+        timerRemaining = timerRemaining - 10;
+        yesOrNoEl.textContent = "Wrong!";
+    };
+
+    if(index < question.length) {
+        index++;
+    };
+
+    displayQuestions(index);
+
+};
+
+/* answer1El.addEventListener("click", nextQuestion)
 answer2El.addEventListener("click", nextQuestion)
 answer3El.addEventListener("click", nextQuestion)
-answer4El.addEventListener("click", nextQuestion)
+answer4El.addEventListener("click", nextQuestion) */
+
+ansBtnEl.forEach(item => {
+    item.addEventListener("click",nextQuestion);
+});
 
 startQuizBtn.addEventListener("click",startGame)
