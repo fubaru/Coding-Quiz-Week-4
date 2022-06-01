@@ -51,6 +51,9 @@ function countDown () {
     
         if (timerRemaining === 0 || index === question.length) {
             clearInterval(clockid);
+            // inputEl.classList.remove("hide");
+            qaViewEl.classList.add("hide");
+            
         };
     }, 1000);
    
@@ -75,14 +78,6 @@ function displayQuestions() {
     answer4El.textContent=question[index].answers[3];
 }
 
-/* function checkAnswer(event) {
-    if (question[answers].solution === event.target.value) {
-        yesOrNoEl.textContent="Correct!";
-    } else if (question[answers].solution !== event.target.value) {
-        timerRemaining = timerRemaining - 10;
-        yesOrNoEl.textContent = "Wrong!";
-    };
-}; */
 
 function nextQuestion (event){
     event.preventDefault();
@@ -103,15 +98,13 @@ function nextQuestion (event){
     };
     // call display question to bring in next question
     displayQuestions(index);
-
 };
 
 function addScore (event) {
     event.preventDefault();
-    inputEl.classList.remove("hide");
-    qaViewEl.classList.add("hide");
+    
 
-    var init = initialsInput.ariaValueMax.toUpperCase();
+    var init = initialsInput.value.toUpperCase();
     scoreList.push({initials: init, score: timerRemaining});
 
     scoreListEl.textContent="";
