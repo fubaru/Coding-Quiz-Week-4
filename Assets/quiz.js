@@ -138,7 +138,12 @@ function goBack() {
     dashboardEl.classList.add("hide");
     timerRemaining = 75;
     timerEl.textContent = `Time:${timerRemaining}`;
-}
+};
+
+function clearScores() {
+    localStorage.clear();
+    scoreListEl.textContent="";
+};
 
 
 /* answer1El.addEventListener("click", nextQuestion)
