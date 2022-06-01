@@ -155,3 +155,4 @@ startQuizBtn.addEventListener("click",startGame);
 
 saveBtn.addEventListener("click", addScore);
 goBackBtn.addEventListener("click", goBack);
+clearScrBtn.addEventListener("click", clearScores);
