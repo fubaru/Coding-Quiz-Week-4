@@ -1,5 +1,6 @@
 var introEl = document.querySelector("#intro");
 var qaViewEl = document.querySelector("#qa-view");
+var inputEl = document.querySelector("input-init")
 var timerEl = document.querySelector("#timer");
 var titleEl = document.querySelector("#title");
 var ansBtnEl = document.querySelectorAll("button.ansBtn");
@@ -9,7 +10,10 @@ var answer3El = document.querySelector("#answer3");
 var answer4El = document.querySelector("#answer4");
 var yesOrNoEl = document.querySelector("#yesOrNo");
 var startQuizBtn = document.querySelector("#start-quiz");
+var saveBtn = document.querySelector("#save")
 
+var initialsInput = document.querySelector("#enter-init");
+var scoreList = [];
 
 /*
 step 1. display start page - title and paragraph and start button.
@@ -100,6 +104,16 @@ function nextQuestion (event){
     displayQuestions(index);
 
 };
+
+function addScore (event) {
+    event.preventDefault();
+    inputEl.classList.remove("hide");
+    qaViewEl.classList.add("hide");
+
+    var init = initialsInput.ariaValueMax.toUpperCase();
+    scoreList.push({ initial})
+
+}
 
 /* answer1El.addEventListener("click", nextQuestion)
 answer2El.addEventListener("click", nextQuestion)
