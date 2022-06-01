@@ -12,7 +12,9 @@ var answer3El = document.querySelector("#answer3");
 var answer4El = document.querySelector("#answer4");
 var yesOrNoEl = document.querySelector("#yesOrNo");
 var startQuizBtn = document.querySelector("#start-quiz");
-var saveBtn = document.querySelector("#save")
+var saveBtn = document.querySelector("#save");
+var goBackBtn = document.querySelector("#goBack");
+var clearScrBtn = document.querySelector("#clearScores");
 
 var initialsInputEl = document.querySelector("#initials");
 var scoreListEl = document.querySelector("#score-list");
@@ -129,8 +131,14 @@ function addScore (event) {
     inputEl.classList.add("hide");
     dashboardEl.classList.remove("hide");
 
-}
+};
 
+function goBack() {
+    introEl.classList.remove("hide");
+    dashboardEl.classList.add("hide");
+    timerRemaining = 75;
+    timerEl.textContent = `Time:${timerRemaining}`;
+}
 
 
 /* answer1El.addEventListener("click", nextQuestion)
@@ -146,3 +154,4 @@ ansBtnEl.forEach(item => {
 startQuizBtn.addEventListener("click",startGame);
 
 saveBtn.addEventListener("click", addScore);
+goBackBtn.addEventListener("click", goBack);
