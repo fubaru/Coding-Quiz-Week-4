@@ -12,7 +12,8 @@ var yesOrNoEl = document.querySelector("#yesOrNo");
 var startQuizBtn = document.querySelector("#start-quiz");
 var saveBtn = document.querySelector("#save")
 
-var initialsInput = document.querySelector("#enter-init");
+var initialsInput = document.querySelector("#initials");
+var scoreListEl = document.querySelector("#score-list");
 var scoreList = [];
 
 /*
@@ -111,7 +112,16 @@ function addScore (event) {
     qaViewEl.classList.add("hide");
 
     var init = initialsInput.ariaValueMax.toUpperCase();
-    scoreList.push({ initial})
+    scoreList.push({initials: init, score: timerRemaining});
+
+    scoreListEl.textContent="";
+    for (var i = 0; i < scoreList.length; i++) {
+        var li = document.createElement("li");
+        li.textContent = `${scoreList.initials}: ${scoreList[i].score}`;
+        scoreListEl.append(li);
+    }
+
+    // Add to local storage
 
 }
 
