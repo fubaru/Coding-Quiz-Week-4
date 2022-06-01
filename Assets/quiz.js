@@ -1,3 +1,4 @@
+// All variables to grab selectors
 var introEl = document.querySelector("#intro");
 var qaViewEl = document.querySelector("#qa-view");
 var inputEl = document.querySelector("#input-init")
@@ -20,22 +21,9 @@ var initialsInputEl = document.querySelector("#initials");
 var scoreListEl = document.querySelector("#score-list");
 var scoreList = [];
 
-/*
-step 1. display start page - title and paragraph and start button.
-start button - ( triggers the quiz game and displays timer and question page)
-
-step 2. Displays questions page and hides start page - timer will start when the start button is clciked, display question, 4 answer buttons
-, start pge becomes hidden then only display question page. When one of the answers is clicked, show correct or wrong. Each question should be 15 seconds and since you have 5 questions. Total time remaining is 75 seconds for 5 questions. total = number of Questions*15seconds. 
-When you get a wrong answer your time gets dedcuted by 15 seconds off the timer and it needs to show wrong. IF you get it right, then no penalty off the clock but you need to show "Correct" message. 
-
-step 3. Once you answer all the questions, you will be presented with the score and input your initial and submit button. The timer should stop and time left becomes your score. When you click submit, it shoudl store initial and score in local storage. 
-
-Step 4: show a dashboard of all the highscores. 
-
-*/
 var timerRemaining = 75;
 var clockid;
-
+// Object fo question, answer, true/false
 var question=[{
     title: "The condition in an if / else statement is enclosed within ____.",
     answers:["1. quotes", "2. curly brackets", "3. parentheses", "4. square brackets"],
@@ -59,7 +47,7 @@ var question=[{
 }];
 
 var index = 0;
-
+// functions
 function countDown () {
     clockid = setInterval(function(){
         timerEl.textContent=timerRemaining;
@@ -75,7 +63,7 @@ function countDown () {
    
 };
 
-
+// start game functions
 function startGame() {
     qaViewEl.classList.remove("hide");
     introEl.classList.add("hide");
@@ -84,7 +72,7 @@ function startGame() {
     displayQuestions(index);
     
 }
-
+// display questions functions
 function displayQuestions() {
     titleEl.textContent=question[index].title;
     answer1El.textContent=question[index].answers[0];
@@ -94,7 +82,7 @@ function displayQuestions() {
     answer4El.textContent=question[index].answers[3];
 }
 
-
+// check answers to questions
 function nextQuestion (event){
     event.preventDefault();
     console.log(question[index].solution);
@@ -118,17 +106,17 @@ function nextQuestion (event){
         inputEl.classList.remove("hide")
         scoreEl.textContent = timerRemaining
     }
-    // call display question to bring in next question
+    
     
 };
-
+// add score and store it in local storage then display it on the scoreboard
 function addScore (event) {
     event.preventDefault();
     
-
+    // push initials and scores into an array 
     var init = initialsInputEl.value.toUpperCase();
     scoreList.push({initials: init, score: timerRemaining});
-
+    // create local storage 
     localStorage.setItem("store", JSON.stringify(scoreList));
     var newStore = JSON.parse(localStorage.getItem("store"));
     scoreList=newStore;
@@ -139,29 +127,23 @@ function addScore (event) {
         li.textContent = `${scoreList[i].initials}: ${scoreList[i].score}`;
         scoreListEl.append(li);
     }
-
+    // hide and add section divs
     inputEl.classList.add("hide");
     dashboardEl.classList.remove("hide");
 
 };
-
+// goback btn function to the intro page
 function goBack() {
     introEl.classList.remove("hide");
     dashboardEl.classList.add("hide");
     timerRemaining = 75;
     timerEl.textContent = `Time:${timerRemaining}`;
 };
-
+// clear btn function to reset
 function clearScores() {
     localStorage.clear();
     scoreListEl.textContent="";
 };
-
-
-/* answer1El.addEventListener("click", nextQuestion)
-answer2El.addEventListener("click", nextQuestion)
-answer3El.addEventListener("click", nextQuestion)
-answer4El.addEventListener("click", nextQuestion) */
 
 // event listeners
 ansBtnEl.forEach(item => {
@@ -173,3 +155,18 @@ startQuizBtn.addEventListener("click",startGame);
 saveBtn.addEventListener("click", addScore);
 goBackBtn.addEventListener("click", goBack);
 clearScrBtn.addEventListener("click", clearScores);
+
+/* Psuedo Code Below:
+
+step 1. display start page - title and paragraph and start button.
+start button - ( triggers the quiz game and displays timer and question page)
+
+step 2. Displays questions page and hides start page - timer will start when the start button is clciked, display question, 4 answer buttons
+, start pge becomes hidden then only display question page. When one of the answers is clicked, show correct or wrong. Each question should be 15 seconds and since you have 5 questions. Total time remaining is 75 seconds for 5 questions. total = number of Questions*15seconds. 
+When you get a wrong answer your time gets dedcuted by 15 seconds off the timer and it needs to show wrong. IF you get it right, then no penalty off the clock but you need to show "Correct" message. 
+
+step 3. Once you answer all the questions, you will be presented with the score and input your initial and submit button. The timer should stop and time left becomes your score. When you click submit, it shoudl store initial and score in local storage. 
+
+Step 4: show a dashboard of all the highscores. 
+
+*/
