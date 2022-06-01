@@ -125,6 +125,8 @@ function addScore (event) {
 
 }
 
+
+
 /* answer1El.addEventListener("click", nextQuestion)
 answer2El.addEventListener("click", nextQuestion)
 answer3El.addEventListener("click", nextQuestion)
@@ -136,3 +138,5 @@ ansBtnEl.forEach(item => {
 });
 
 startQuizBtn.addEventListener("click",startGame);
+
+saveBtn.addEventListener("click", addScore);
