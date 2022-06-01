@@ -1,14 +1,14 @@
-var introEl = document.querySelector("#intro")
-var qaViewEl = document.querySelector("#qa-view")
-var timerEl = document.querySelector("#timer")
-var titleEl = document.querySelector("#title")
-var ansBtnEl = document.querySelectorAll("button.ansBtn")
-var answer1El = document.querySelector("#answer1")
-var answer2El = document.querySelector("#answer2")
-var answer3El = document.querySelector("#answer3")
-var answer4El = document.querySelector("#answer4")
-var yesOrNoEl = document.querySelector("#yesOrNo")
-var startQuizBtn = document.querySelector("#start-quiz")
+var introEl = document.querySelector("#intro");
+var qaViewEl = document.querySelector("#qa-view");
+var timerEl = document.querySelector("#timer");
+var titleEl = document.querySelector("#title");
+var ansBtnEl = document.querySelectorAll("button.ansBtn");
+var answer1El = document.querySelector("#answer1");
+var answer2El = document.querySelector("#answer2");
+var answer3El = document.querySelector("#answer3");
+var answer4El = document.querySelector("#answer4");
+var yesOrNoEl = document.querySelector("#yesOrNo");
+var startQuizBtn = document.querySelector("#start-quiz");
 
 
 /*
@@ -25,16 +25,16 @@ Step 4: show a dashboard of all the highscores.
 
 */
 var timerRemaining = 75;
-var clockid
+var clockid;
 
 var question=[{
     title: "new question 1",
-    answers:["1. answer1", "2. answer2", "3. answer3", "4. answer4"],
-    solution: "2"
+    answers:["answer1", "answer2", "answer3", "answer4"],
+    solution: 0
 },{
     title: "new question 2",
-    answers:["1. answer1", "2. answer2", "3. answer3", "4. answer4"],
-    solution: "3"
+    answers:["answer1", "banana", "answer3", "answer4"],
+    solution: 1
 }];
 
 var index = 0;
@@ -64,6 +64,7 @@ function startGame() {
 function displayQuestions() {
     titleEl.textContent=question[index].title;
     answer1El.textContent=question[index].answers[0];
+    console.log(question[index]);
     answer2El.textContent=question[index].answers[1];
     answer3El.textContent=question[index].answers[2];
     answer4El.textContent=question[index].answers[3];
@@ -80,18 +81,22 @@ function displayQuestions() {
 
 function nextQuestion (event){
     event.preventDefault();
-
-    if (question[index].answers === event.target.value) {
+    console.log(question[index].solution);
+    console.log(event.target.dataset.index);
+    // check answers
+    if (question[index].solution == event.target.dataset.index) {
         yesOrNoEl.textContent="Correct!";
-    } else if (question[index].answers !== event.target.value) {
-        timerRemaining = timerRemaining - 10;
+        
+    } else if (question[index].solution !== event.target.dataset.index) {
+        timerRemaining = timerRemaining - 15;
         yesOrNoEl.textContent = "Wrong!";
     };
-
-    if(index < question.length) {
+    // increase question index
+    if(index < question.length-1) {
         index++;
+        console.log(index)
     };
-
+    // call display question to bring in next question
     displayQuestions(index);
 
 };
@@ -101,8 +106,9 @@ answer2El.addEventListener("click", nextQuestion)
 answer3El.addEventListener("click", nextQuestion)
 answer4El.addEventListener("click", nextQuestion) */
 
+// event listeners
 ansBtnEl.forEach(item => {
     item.addEventListener("click",nextQuestion);
 });
 
-startQuizBtn.addEventListener("click",startGame)
+startQuizBtn.addEventListener("click",startGame);
