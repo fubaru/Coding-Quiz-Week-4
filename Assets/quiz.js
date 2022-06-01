@@ -1,8 +1,10 @@
 var introEl = document.querySelector("#intro");
 var qaViewEl = document.querySelector("#qa-view");
-var inputEl = document.querySelector("input-init")
+var inputEl = document.querySelector("#input-init")
 var timerEl = document.querySelector("#timer");
+var dashboardEl = document.querySelector("#dashboard")
 var titleEl = document.querySelector("#title");
+var scoreEl = document.querySelector("#score");
 var ansBtnEl = document.querySelectorAll("button.ansBtn");
 var answer1El = document.querySelector("#answer1");
 var answer2El = document.querySelector("#answer2");
@@ -12,7 +14,7 @@ var yesOrNoEl = document.querySelector("#yesOrNo");
 var startQuizBtn = document.querySelector("#start-quiz");
 var saveBtn = document.querySelector("#save")
 
-var initialsInput = document.querySelector("#initials");
+var initialsInputEl = document.querySelector("#initials");
 var scoreListEl = document.querySelector("#score-list");
 var scoreList = [];
 
@@ -95,26 +97,37 @@ function nextQuestion (event){
     if(index < question.length-1) {
         index++;
         console.log(index)
-    };
+        displayQuestions(index);
+    } else {
+        clearInterval(clockid);
+        qaViewEl.classList.add("hide");
+        inputEl.classList.remove("hide")
+        scoreEl.textContent = timerRemaining
+    }
     // call display question to bring in next question
-    displayQuestions(index);
+    
 };
 
 function addScore (event) {
     event.preventDefault();
     
 
-    var init = initialsInput.value.toUpperCase();
+    var init = initialsInputEl.value.toUpperCase();
     scoreList.push({initials: init, score: timerRemaining});
 
+    localStorage.setItem("store", JSON.stringify(scoreList));
+    var newStore = JSON.parse(localStorage.getItem("store"));
+    scoreList=newStore;
     scoreListEl.textContent="";
+    console.log(scoreList)
     for (var i = 0; i < scoreList.length; i++) {
         var li = document.createElement("li");
-        li.textContent = `${scoreList.initials}: ${scoreList[i].score}`;
+        li.textContent = `${scoreList[i].initials}: ${scoreList[i].score}`;
         scoreListEl.append(li);
     }
 
-    // Add to local storage
+    inputEl.classList.add("hide");
+    dashboardEl.classList.remove("hide");
 
 }
 
