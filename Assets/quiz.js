@@ -37,13 +37,25 @@ var timerRemaining = 75;
 var clockid;
 
 var question=[{
-    title: "new question 1",
-    answers:["answer1", "answer2", "answer3", "answer4"],
-    solution: 0
-},{
-    title: "new question 2",
-    answers:["answer1", "banana", "answer3", "answer4"],
+    title: "The condition in an if / else statement is enclosed within ____.",
+    answers:["1. quotes", "2. curly brackets", "3. parentheses", "4. square brackets"],
     solution: 1
+},{
+    title: "Commonly used data types do NOT include:",
+    answers:["1. strings", "2. booleans", "3. alerts", "4. numbers"],
+    solution: 2
+},{
+    title: "A very useful tool used during development and debugging for printing content to the debugger is:",
+    answers:["1. Javascript", "2. terminal/bash", "3. for loops", "4. console.log"],
+    solution: 3
+},{
+    title: "Arrays in Javascript can be used to store ____.",
+    answers:["1. numbers and strings", "2. other arrays", "3. booleans", "4. all of the above"],
+    solution: 3
+},{
+    title: "String values must be enclosed within ____ when being assigned to variables.",
+    answers:["1. commmas", "2. curly brackets", "3. quotes", "4. parentheses"],
+    solution: 2
 }];
 
 var index = 0;
