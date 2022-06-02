@@ -9,7 +9,7 @@ body {
     background-image: url("clouds-gd61577c53_1920.jpg");
 }
 
-.noBullets {
+.noBullets, #score-list {
     list-style-type: none;
 }
 
@@ -18,7 +18,7 @@ body {
     margin: 10px;
 }
 
-#intro, #qa-view {
+#intro, #qa-view, #input-init, #dashboard {
     text-align: center;
 }
 
@@ -26,9 +26,9 @@ body {
     font-size: 20px;
 }
 
-#startPgTitle, #title {
+#startPgTitle, #title, #input-init, #score-list {
     margin-top: 15vh;
-    font-size: 50px;
+    font-size: 45px;
 }
 
 #yesOrNo {
@@ -36,7 +36,7 @@ body {
     color: cadetblue;
 }
 
-#start-quiz {
+#start-quiz, #save, #goBack, #clearScores {
     font-size: 150%;
     margin: 2%;
 }
