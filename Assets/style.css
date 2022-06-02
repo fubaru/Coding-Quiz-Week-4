@@ -1,9 +1,15 @@
 header {
     display: flex;
+    font-size: 150%;
 }
 
 #high-scores {
     width: 80%;
+}
+
+#high-scores:hover {
+    color: blue;
+    cursor: pointer;
 }
 
 #timer {

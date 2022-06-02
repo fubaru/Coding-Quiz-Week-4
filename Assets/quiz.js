@@ -16,6 +16,7 @@ var startQuizBtn = document.querySelector("#start-quiz");
 var saveBtn = document.querySelector("#save");
 var goBackBtn = document.querySelector("#goBack");
 var clearScrBtn = document.querySelector("#clearScores");
+var viewScrBtn = document.querySelector("#high-scores");
 
 var initialsInputEl = document.querySelector("#initials");
 var scoreListEl = document.querySelector("#score-list");
@@ -145,6 +146,14 @@ function clearScores() {
     scoreListEl.textContent="";
 };
 
+function viewScores() {
+    if (dashboardEl.classList.contains('hide')) {
+        dashboardEl.classList.remove("hide");
+    } else {
+        return alert("No Scores to show.");
+    };
+};
+
 // event listeners
 ansBtnEl.forEach(item => {
     item.addEventListener("click",nextQuestion);
@@ -155,6 +164,7 @@ startQuizBtn.addEventListener("click",startGame);
 saveBtn.addEventListener("click", addScore);
 goBackBtn.addEventListener("click", goBack);
 clearScrBtn.addEventListener("click", clearScores);
+viewScrBtn.addEventListener("click", viewScores)
 
 /* Psuedo Code Below:
 
