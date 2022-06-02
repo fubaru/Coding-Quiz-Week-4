@@ -1,6 +1,25 @@
 header {
     display: flex;
+    font-size: 120%;
+    color: olive;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-image: url("clouds-gd61577c53_1920.jpg");
+}
+
+#intro {
+    text-align: center;
+}
+
+#startPgTitle {
+    margin-top: 25vh;
+}
+
+#start-quiz {
     font-size: 150%;
+    margin: 2%;
 }
 
 #high-scores {
