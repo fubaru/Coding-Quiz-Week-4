@@ -8,8 +8,8 @@ A quiz application is created using HTML, CSS, and JavaScript. The appliaction e
 
 This project has been deployed to GitHub Pages. To get this project up and running, you can follow the deployment link. Or, download the sources files to use this as a template.
 
-* [GitHub Repository] 
-* [Deployed GitHub IO]
+* [GitHub Repository](https://github.com/fubaru/Coding-Quiz-Week-4-Challenege)
+* [Deployed GitHub IO](https://fubaru.github.io/Coding-Quiz-Week-4-Challenege/index.HTML)
 
 ## Table of Contents (Optional)
 
