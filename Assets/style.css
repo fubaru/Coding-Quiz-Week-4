@@ -16,6 +16,12 @@ body {
 .ansBtn {
     font-size: 200%;
     margin: 10px;
+    background-color: chartreuse;
+    border-radius: 30px;
+}
+
+.ansBtn:hover {
+    background-color: bisque;
 }
 
 #intro, #qa-view, #input-init, #dashboard {
@@ -31,6 +37,13 @@ body {
     font-size: 45px;
 }
 
+#initials {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
 #yesOrNo {
     font-size: 50px;
     color: cadetblue;
@@ -39,8 +52,13 @@ body {
 #start-quiz, #save, #goBack, #clearScores {
     font-size: 150%;
     margin: 2%;
+    border-radius: 20px;
+    background-color: rgb(185, 137, 230);
 }
 
+#start-quiz:hover, #save:hover, #goBack:hover, #clearScores:hover {
+    background-color: beige;
+}
 
 #high-scores {
     width: 80%;
