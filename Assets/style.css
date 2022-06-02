@@ -9,18 +9,33 @@ body {
     background-image: url("clouds-gd61577c53_1920.jpg");
 }
 
-#intro {
+.noBullets {
+    list-style-type: none;
+}
+
+.ansBtn {
+    font-size: 200%;
+    margin: 10px;
+}
+
+#intro, #qa-view {
     text-align: center;
 }
 
-#startPgTitle {
-    margin-top: 25vh;
+#introP {
+    font-size: 20px;
+}
+
+#startPgTitle, #title {
+    margin-top: 15vh;
+    font-size: 50px;
 }
 
 #start-quiz {
     font-size: 150%;
     margin: 2%;
 }
+
 
 #high-scores {
     width: 80%;
