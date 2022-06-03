@@ -42,9 +42,10 @@ Credit to my family friend Kathryn Wilkinson and her colleague, Zoe Chalk for he
 
 ## Badges
 
-![badmath](https://img.shields.io/badge/HTML-17.6%25-orange)
-![badmath](https://img.shields.io/badge/CSS-38.8%25-purple)
-![badmath](https://img.shields.io/badge/JavaScript-43.6%-yellow)
+![badmath](https://img.shields.io/badge/JavaScript-67.7%-yellow)
+![badmath](https://img.shields.io/badge/HTML-19.6%25-orange)
+![badmath](https://img.shields.io/badge/CSS-12.7%25-purple)
+
 
 ## Features
 
